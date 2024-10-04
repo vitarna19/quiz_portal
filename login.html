@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz and Assignment Submission Portal</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <section id="login-section">
+        <div class="login-container">
+            <h1>Welcome to the Portal</h1>
+            <p>Please select your role to login:</p>
+            <div class="login-options">
+                <button class="login-btn" onclick="openTeacherLogin()">Teacher Login</button>
+                <button class="login-btn" onclick="openStudentLogin()">Student Login</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Login Page -->
+    <section action="login.php" method="POST" id="teacher-login-section" class="hidden">
+        <div class="login-container">
+            <h2>Teacher Login</h2>
+            <form id="teacher-login-form">
+                <label for="teacher-email">Email:</label>
+                <input type="email" id="teacher-email" required>
+
+                <label for="teacher-password">Password:</label>
+                <input type="password" id="teacher-password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Student Login Page -->
+    <!--<section action="login.php" method="POST" id="student-login-section" class="hidden">
+        <div class="login-container">
+            <h2>Student Login</h2>
+            <form id="student-login-form">
+                <label for="student-email">Email:</label>
+                <input type="email" id="student-email" required>
+
+                <label for="student-password">Password:</label>
+                <input type="password" id="student-password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>-->
+    <section id="student-login-section" class="hidden">
+        <div class="login-container">
+            <h2>Student Login</h2>
+            <form action="login.php" method="POST" id="student-login-form">
+                <label for="student-email">Email:</label>
+                <input type="email" id="student-email" name="student-email" required>
+    
+                <label for="student-password">Password:</label>
+                <input type="password" id="student-password" name="student-password" required>
+    
+                <button type="submit">Login</button>
+                <!-- <a href="/final.html" target="_blank">Submit</a> -->
+            </form>
+        </div>
+    </section>
+    
+
+    <!-- Teacher's Dashboard (Hidden by default) -->
+    <section id="teacher-dashboard" class="hidden">
+        <h2>Teacher's Dashboard</h2>
+        <!-- Teacher's quiz and assignment post section (reuse from previous HTML) -->
+        <form id="post-quiz">
+            <h3>Upload a Quiz</h3>
+            <!-- Form details here -->
+        </form>
+        <form action="upload.php" method="POST" id="post-quiz" enctype="multipart/form-data">
+            <h3>Post Quiz</h3>
+            <label for="Quiz-title">Ouiz Title</label>
+            <input type="text" id="Quiz-title" name="Quiz-title" required>
+    
+            <label for="Quiz-file">Upload Quiz (PDF only)</label>
+            <input type="file" id="quiz-file" name="quiz-file" accept=".pdf" required>
+            <!-- <button type="submit">Submit Quiz</button> -->
+            <a href="/final.html" target="_blank">Submit</a>
+        </form> 
+
+        <form action="upload.php" method="POST" id="post-assignment" enctype="multipart/form-data">
+            <h3>Post Assignment</h3>
+            <label for="assignment-title">Assignment Title</label>
+            <input type="text" id="assignment-title" name="assignment-title" required>
+    
+            <label for="assignment-file">Upload Assignment (PDF only)</label>
+            <input type="file" id="assignment-file" name="assignment-file" accept=".pdf" required>
+            <!-- <button type="submit">Submit Assignment</button> -->
+            <a href="/final.html" target="_blank">Submit</a>
+        </form> 
+    </section>
+
+    <!-- Student's Dashboard (Hidden by default) -->
+    <section id="student-dashboard" class="hidden">
+        <h2>Student's Dashboard</h2>
+        
+        
+    
+        <!-- Student's assignment submission section -->
+        <form action="upload.php" method="POST" id="submit-assignment" enctype="multipart/form-data">
+            <h3>Submit Assignment</h3>
+            <label for="assignment-title">Assignment Title</label>
+            <input type="text" id="assignment-title" name="assignment-title" required>
+    
+            <label for="assignment-file">Upload Assignment (PDF only)</label>
+            <input type="file" id="assignment-file" name="assignment-file" accept=".pdf" required>
+    
+            <!-- <button type="submit">Submit Assignment</button> -->
+            <a href="/final.html" target="_blank">Submit</a>
+        </form> 
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Quiz and Assignment Submission Portal. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for switching between pages
+        function openTeacherLogin() {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('teacher-login-section').classList.remove('hidden');
+        }
+
+        function openStudentLogin() {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('student-login-section').classList.remove('hidden');
+        }
+
+        document.getElementById('teacher-login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Perform login validation here (using backend for real case)
+            document.getElementById('teacher-login-section').classList.add('hidden');
+            document.getElementById('teacher-dashboard').classList.remove('hidden');
+        });
+
+        document.getElementById('student-login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Perform login validation here (using backend for real case)
+            document.getElementById('student-login-section').classList.add('hidden');
+            document.getElementById('student-dashboard').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

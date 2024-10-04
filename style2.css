@@ -1,0 +1,57 @@
+/* Center the title and body */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black; /* Background color black */
+}
+
+.container {
+    text-align: center;
+    color: white; /* Title and content text color */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Tick mark animation */
+.tick-mark {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+}
+
+.tick {
+    width: 50px;
+    height: 25px;
+    border-left: 5px solid rgb(162, 240, 162);
+    border-bottom: 5px solid rgb(143, 241, 143);
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: tick-animation 1s ease-in-out forwards;
+}
+
+@keyframes tick-animation {
+    0% {
+        opacity: 0;
+        transform: rotate(-45deg) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(-45deg) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(-45deg) scale(1);
+    }
+}
